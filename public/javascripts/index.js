@@ -47,6 +47,7 @@ window.onload = function() {
 
   function sendSMS(obj) {
     var sms_url = 'sms:' + document.getElementById('param_to_set_phone').value.replace(/[^0-9.]/g, "") + "?&body=" + encodeURIComponent(getURL());
+    alert(sms_url);
     window.open(sms_url);
   }
 
