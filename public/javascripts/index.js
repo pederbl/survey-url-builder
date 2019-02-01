@@ -16,7 +16,9 @@ function getURL() {
     params_to_set.forEach(function(item, index) {
       params[item] = document.getElementById('param_to_set_' + item).value;
     });
-    return base_url + "?" + toQueryString(params);
+    var url = base_url + "?" + toQueryString(params);
+    console.log(url);
+    return url;
 }
 
 window.onload = function() { 
@@ -44,7 +46,7 @@ window.onload = function() {
   }
 
   function sendSMS(obj) {
-    var sms_url = 'sms:' + document.getElementById('param_to_set_phone').value.replace(/[^0-9.]/g, "") + "?&body=" + getURL();
+    var sms_url = 'sms:' + document.getElementById('param_to_set_phone').value.replace(/[^0-9.]/g, "") + "?&body=" + encodeURIComponent(getURL());
     window.open(sms_url);
   }
 
