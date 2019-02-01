@@ -11,16 +11,19 @@ function toQueryString(obj) {
   return str.join("&");
 }
 
-window.onload = function() { 
-  var url_element = document.getElementById('url');
-  var url = base_url; 
-
-  function setURL() {
+function getURL() {
     var params = JSON.parse(JSON.stringify(fixed_params));
     params_to_set.forEach(function(item, index) {
       params[item] = document.getElementById('param_to_set_' + item).value;
     });
-    url = base_url + "?" + toQueryString(params);
+    return base_url + "?" + toQueryString(params);
+}
+
+window.onload = function() { 
+  var url_element = document.getElementById('url');
+
+  function setURL() {
+    var url = getURL();
     url_element.innerText = url;
     url_element.setAttribute('href', url);
   }
@@ -41,7 +44,7 @@ window.onload = function() {
   }
 
   function sendSMS(obj) {
-    var sms_url = 'sms:' + document.getElementById('param_to_set_phone').value.replace(/[^0-9.]/g, "") + "?&body=" + url;
+    var sms_url = 'sms:' + document.getElementById('param_to_set_phone').value.replace(/[^0-9.]/g, "") + "?&body=" + getURL();
     window.open(sms_url);
   }
 
