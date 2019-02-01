@@ -13,7 +13,12 @@ block content
         label(for= param)= param + ':'
         input(name= param id="param_to_set_" + param)
 
-  div(id= "url")= base_url
+  div
+    span(id= "url")= base_url
+  div
+    button(id= "copyURL") Copy link to clipboard
+
+
 
   script.
     base_url= "#{base_url}";
