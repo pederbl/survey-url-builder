@@ -19,7 +19,9 @@ window.onload = function() {
     params_to_set.forEach(function(item, index) {
       params[item] = document.getElementById('param_to_set_' + item).value;
     });
-    url_element.innerText = base_url + "?" + toQueryString(params);
+    var url = base_url + "?" + toQueryString(params);
+    url_element.innerText = url;
+    url_element.setAttribute('href', url);
   }
 
   function copyURL(obj) {
@@ -37,11 +39,17 @@ window.onload = function() {
     window.getSelection().removeAllRanges();
   }
 
+  function sendSMS(obj) {
+    var sms_url = 'sms:' + document.getElementById('param_to_set_phone').value.replace(/[^0-9.]/g, "") + "?a&body=test";
+    console.log(sms_url);
+    //window.open(sms_url);
+  }
+
   params_to_set.forEach(function(item, index) {
     document.getElementById('param_to_set_' + item).addEventListener("keyup", setURL);
   });
-
   document.getElementById('copyURL').addEventListener('click', copyURL);
+  document.getElementById('sendSMS').addEventListener('click', sendSMS);
 
   setURL();
 }

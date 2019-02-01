@@ -14,11 +14,11 @@ block content
         input(name= param id="param_to_set_" + param)
 
   div
-    span(id= "url")= base_url
+    a(id= "url" href="#{base_url}")= base_url
   div
     button(id= "copyURL") Copy link to clipboard
-
-
+  div
+    button(id= "sendSMS") Send SMS
 
   script.
     base_url= "#{base_url}";
