@@ -6,7 +6,7 @@ router.get('/', function(req, res, next) {
 	var params = req.parameters;
 	var base_url = params.permit('u').value().u;
 	var params_to_set = params.permit('p').value().p.split(',');
-	var fixed_params = params.permit('v').all().v;
+	var fixed_params = params.permit('f').all().f || {};
 
   res.render('index', { 
   	title: 'URL Builder',

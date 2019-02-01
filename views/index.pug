@@ -8,10 +8,10 @@ block content
   p Welcome to #{title}
 
   div(id= "form")
-    each val in params_to_set
+    each param in params_to_set
       div
-        label(for= val)= val + ':'
-        input(name= val id="param_to_set_" + val)
+        label(for= param)= param + ':'
+        input(name= param id="param_to_set_" + param)
 
   div(id= "url")= base_url
 
