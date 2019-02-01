@@ -19,14 +19,15 @@ window.onload = function() {
     params_to_set.forEach(function(item, index) {
       params[item] = document.getElementById('param_to_set_' + item).value;
     });
-    var url = base_url + "?" + toQueryString(params);
-    url_element.innerText = url;
+    url_element.innerText = base_url + "?" + toQueryString(params);
   }
 
   function copyURL(obj) {
+    var selection = window.getSelection();
     var range = document.createRange();
-    range.selectNode(url_element);
-    window.getSelection().addRange(range);
+    range.selectNodeContents(url_element);
+    selection.removeAllRanges();
+    selection.addRange(range);
     try {
       document.execCommand('copy');
     } catch(err) {
