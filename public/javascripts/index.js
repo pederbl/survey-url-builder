@@ -12,14 +12,15 @@ function toQueryString(obj) {
 }
 
 window.onload = function() { 
-  var url_element = document.getElementById('url'); 
+  var url_element = document.getElementById('url');
+  var url = base_url; 
 
   function setURL() {
     var params = JSON.parse(JSON.stringify(fixed_params));
     params_to_set.forEach(function(item, index) {
       params[item] = document.getElementById('param_to_set_' + item).value;
     });
-    var url = base_url + "?" + toQueryString(params);
+    url = base_url + "?" + toQueryString(params);
     url_element.innerText = url;
     url_element.setAttribute('href', url);
   }
@@ -40,7 +41,7 @@ window.onload = function() {
   }
 
   function sendSMS(obj) {
-    var sms_url = 'sms:' + document.getElementById('param_to_set_phone').value.replace(/[^0-9.]/g, "") + "?a&body=test";
+    var sms_url = 'sms:' + document.getElementById('param_to_set_phone').value.replace(/[^0-9.]/g, "") + "?a&body=" + url;
     window.open(sms_url);
   }
 
