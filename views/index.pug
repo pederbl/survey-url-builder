@@ -1,0 +1,21 @@
+extends layout
+
+block scripts
+  script(src='/javascripts/index.js')
+
+block content
+  h1= title
+  p Welcome to #{title}
+
+  div(id= "form")
+    each val in params_to_set
+      div
+        label(for= val)= val + ':'
+        input(name= val id="param_to_set_" + val)
+
+  div(id= "url")= base_url
+
+  script.
+    base_url= "#{base_url}";
+    params_to_set= !{JSON.stringify(params_to_set)};
+    fixed_params= !{JSON.stringify(fixed_params)};
