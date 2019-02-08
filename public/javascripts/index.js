@@ -60,7 +60,7 @@ window.onload = function() {
   });
   document.getElementById('copyURL').addEventListener('click', copyURL);
   document.getElementById('sendSMS').addEventListener('click', sendSMS);
-  document.getElementById('sendEmail').addEventListener('click', sendSMS);
+  document.getElementById('sendEmail').addEventListener('click', sendEmail);
 
   setURL();
 }
