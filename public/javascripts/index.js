@@ -46,9 +46,13 @@ window.onload = function() {
   }
 
   function sendSMS(obj) {
-    var sms_url = 'sms:' + document.getElementById('param_to_set_phone').value.replace(/[^0-9.]/g, "") + "?&body=" + encodeURIComponent(getURL());
-    alert(sms_url);
-    window.open(sms_url);
+    var url = 'sms:' + document.getElementById('param_to_set_phone').value.replace(/[^0-9.]/g, "") + "?&body=" + encodeURIComponent(getURL());
+    window.open(url);
+  }
+
+  function sendEmail(obj) {
+    var url = 'mailto:' + document.getElementById('param_to_set_email').value + "?body=" + encodeURIComponent(getURL());
+    window.open(url);
   }
 
   params_to_set.forEach(function(item, index) {
@@ -56,6 +60,7 @@ window.onload = function() {
   });
   document.getElementById('copyURL').addEventListener('click', copyURL);
   document.getElementById('sendSMS').addEventListener('click', sendSMS);
+  document.getElementById('sendEmail').addEventListener('click', sendSMS);
 
   setURL();
 }
