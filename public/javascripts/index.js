@@ -61,7 +61,7 @@ window.onload = function() {
     getShortUrl(longUrl, function(shortUrl) {
       var url = 'mailto:' + document.getElementById('param_to_set_email').value + "?body=" + encodeURIComponent(shortUrl);
       window.open(url);
-    }
+    });
   }
 
   params_to_set.forEach(function(item, index) {
