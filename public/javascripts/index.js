@@ -2,8 +2,6 @@ var base_url;
 var params_to_set;
 var fixed_params;
 
-var shortUrl = require('node-url-shortener');
-
 function toQueryString(obj) {
   var str = [];
   for (var p in obj)
@@ -20,12 +18,6 @@ function getUrl() {
   });
   var url = base_url + "?" + toQueryString(params);
   return url;
-}
-
-function getShortUrl(longUrl, callback) {
-  shortUrl.short('https://google.com', function(err, shortUrl) {
-    callback(shortUrl);
-  });
 }
 
 window.onload = function() { 
@@ -57,11 +49,9 @@ window.onload = function() {
   }
 
   function sendEmail(obj) {
-    longUrl = getUrl();
-    getShortUrl(longUrl, function(shortUrl) {
-      var url = 'mailto:' + document.getElementById('param_to_set_email').value + "?body=" + encodeURIComponent(shortUrl);
-      window.open(url);
-    });
+    var formUrl = getUrl();
+    var url = 'mailto:' + document.getElementById('param_to_set_email').value + "?body=" + encodeURIComponent(formUrl);
+    window.open(url);
   }
 
   params_to_set.forEach(function(item, index) {
