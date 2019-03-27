@@ -14,7 +14,7 @@ function toQueryString(obj) {
 function getUrl() {
   var params = JSON.parse(JSON.stringify(fixed_params));
   params_to_set.forEach(function(item, index) {
-    params[item] = document.getElementById('param_to_set_' + item).value;
+    params[item] = document.getElementById('param_to_set_' + item).value.trim();
   });
   var url = base_url + "?" + toQueryString(params);
   return url;
@@ -43,7 +43,7 @@ window.onload = function() {
     window.getSelection().removeAllRanges();
   }
 
-  function sendSMS(obj) {
+  function sendSms(obj) {
     var url = 'sms:' + document.getElementById('param_to_set_phone').value.replace(/[^0-9.]/g, "") + "?&body=" + encodeURIComponent(getUrl());
     window.open(url);
   }
@@ -58,7 +58,7 @@ window.onload = function() {
     document.getElementById('param_to_set_' + item).addEventListener("keyup", setUrl);
   });
   document.getElementById('copyUrl').addEventListener('click', copyUrl);
-  document.getElementById('sendSMS').addEventListener('click', sendSMS);
+  document.getElementById('sendSms').addEventListener('click', sendSms);
   document.getElementById('sendEmail').addEventListener('click', sendEmail);
 
   setUrl();
